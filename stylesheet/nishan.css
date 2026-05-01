@@ -1,0 +1,90 @@
+
+.lose-page {
+  padding: 20px;
+}
+
+.lose-card {
+  width: min(100%, 420px);
+  background: #fff;
+  border: 1px solid #d9dee6;
+  border-radius: 20px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  padding: 36px 26px;
+  text-align: center;
+}
+
+.lose-image {
+  margin: 0 auto 22px;
+  width: 120px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f4f6fa;
+  border: 1px solid #d9dee6;
+}
+
+.lose-image  {
+    font-size: 6.5rem;
+}
+
+.lose-card h1 {
+  margin: 0 0 14px;
+  font-size: 2.6rem;
+  color: #1f1f23;
+}
+
+.lose-card p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+  color: #575a65;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+.btn-retry {
+  background: #2570f5;
+  color: #fff;
+}
+
+.btn-home {
+  background: #f4f6fa;
+  border: 1px solid #d9dee6;
+  color: #1f1f23;
+}
+
+@media (max-width: 520px) {
+  .lose-card {
+    padding: 24px 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
