@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round Won - AeroHunt</title>
+    <link rel="stylesheet" href="../stylesheet/nishan.css">
+</head>
+<body class="win-page">
+    <div class="confetti" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="result-card win-card">
+        <div class="win-image">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle cx="60" cy="60" r="56" fill="#f1fdf4" stroke="#4caf50" stroke-width="4" />
+                <path d="M42 60 L54 72 L78 48" fill="none" stroke="#4caf50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <h1>Round Won</h1>
+        <p>Nice work, you finished the round.</p>
+        <p>Play again or go back to the menu.</p>
+        <div class="actions">
+            <a class="btn btn-next" href="../index.html">Play Again</a>
+            <a class="btn btn-menu" href="../index.html">Menu</a>
+        </div>
+    </div>
+    <audio id="win-sound" src="../assets/winingSound.mp3" autoplay></audio>
+</body>
+</html>
