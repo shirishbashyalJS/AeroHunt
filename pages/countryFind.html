@@ -4,11 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country Find</title>
+    <title>AeroHunt - Find The Country</title>
+    <link rel="stylesheet" href="../stylesheet/countryFind.css">
 </head>
 
 <body>
-    <h1>Country Find</h1>
+    <div class="page-container">
+        <h1 class="page-title">Find The Country Where The Treasure Is Located!</h1>
+
+        <div class="game-container">
+            <!-- Left Section: Map -->
+            <div class="left-section">
+                <div id="map"></div>
+            </div>
+
+            <!-- Right Section: Hints and Stats -->
+            <div class="right-section">
+                <div class="hints-panel">
+                    <h2>Hints</h2>
+                    <div id="hints-content" class="hints-content">
+                        <p>Loading hints...</p>
+                    </div>
+                </div>
+
+                <div class="stats-panel">
+                    <div class="stat-item">
+                        <h3>Current Location</h3>
+                        <p id="current-location">Unknown</p>
+                    </div>
+
+                    <div class="stat-item">
+                        <h3>Money Left</h3>
+                        <p id="money-left">$1000</p>
+                    </div>
+
+                    <button id="submit-btn" class="submit-btn">Submit Answer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/countryFind.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=marker&loading=async&callback=window.initGame"></script>
 </body>
 
 </html>
