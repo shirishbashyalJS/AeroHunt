@@ -5,10 +5,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velocity Find</title>
+    <link rel="stylesheet" href="../stylesheet/karan.css">
 </head>
 
 <body>
-    <h1>Velocity Find</h1>
+    <div class="page-wrapper">
+        <div class="card">
+            <div class="top-row">
+                <div class="avatar">🏹</div>
+                <div class="title-block">
+                    <h1>Oh! The Treasure Is On The Roof Of The Temple.</h1>
+                </div>
+            </div>
+
+            <div class="info-text">You have an arrow to target the treasure on the roof of the temple to make it come down.</div>
+            <div class="hint-area">
+                <div class="hint-title">There is also a hint on the map.</div>
+                <div class="hint-series"></div>
+                <div class="hint-note">Find the next value in the pattern to set the arrow's initial speed.</div>
+            </div>
+
+            <div class="info-text question-text">What will be the initial velocity of the arrow?</div>
+
+            <div class="input-row">
+                <label for="velocity-input">Initial Velocity</label>
+                <input id="velocity-input" type="text" inputmode="numeric" maxlength="3" placeholder="34">
+                <button id="check-btn">Check</button>
+            </div>
+
+            <div id="message"></div>
+            <button id="reset-btn">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const puzzles = [
+            {
+                type: 'sequence',
+                pattern: '2, 5, 8, 11, 14 ...',
+                answer: 17,
+                label: 'The arrow speed moves forward with a steady step.'
+            },
+            {
+                type: 'sequence',
+                pattern: '3, 6, 12, 24, 48 ...',
+                answer: 96,
+                label: 'Each term grows faster than the one before.'
+            },
+            {
+                type: 'sequence',
+                pattern: '1, 1, 2, 3, 5, 8, 13, 21 ...',
+                answer: 34,
+                label: 'A classic pattern built from two earlier values.'
+            },
+            {
+                type: 'series',
+                pattern: '1, 3, 6, 10, 15 ...',
+                answer: 21,
+                label: 'This is the running total of steadily increasing steps.'
+            },
+            {
+                type: 'series',
+                pattern: '2, 5, 11, 26, 57 ...',
+                answer: 120,
+                label: 'Each total includes all of the earlier numbers.'
+            },
+            {
+                type: 'series',
+                pattern: '1, 4, 9, 16, 25 ...',
+                answer: 36,
+                label: 'This is a series of growing square values.'
+            }
+        ];
+
+        let currentPuzzle = puzzles[0];
+        const velocityInput = document.getElementById('velocity-input');
+        const checkBtn = document.getElementById('check-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const message = document.getElementById('message');
+        const hintSeries = document.querySelector('.hint-series');
+        const hintNote = document.querySelector('.hint-note');
+        const questionText = document.querySelector('.question-text');
+
+        function initGame() {
+            currentPuzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
+            const prefix = currentPuzzle.type === 'series' ? 'Series:' : 'Sequence:';
+            hintSeries.textContent = `${prefix} ${currentPuzzle.pattern}`;
+            hintNote.textContent = currentPuzzle.label;
+            questionText.textContent = 'What will be the initial velocity of the arrow?';
+            velocityInput.value = '';
+            message.textContent = '';
+            message.style.color = '#1d4ed8';
+            checkBtn.disabled = false;
+            velocityInput.placeholder = currentPuzzle.answer.toString().slice(0, 2).replace(/\d/g, '_');
+        }
+
+        function checkVelocity() {
+            const guessValue = velocityInput.value.trim();
+            if (!guessValue) {
+                message.textContent = 'Enter a number from the sequence.';
+                message.style.color = '#be123c';
+                return;
+            }
+
+            const guess = Number(guessValue);
+            if (Number.isNaN(guess)) {
+                message.textContent = 'Please enter a valid number.';
+                message.style.color = '#be123c';
+                return;
+            }
+
+            if (guess === currentPuzzle.answer) {
+                message.textContent = `Correct! The arrow will hit the target with initial velocity ${guess} m/s.`;
+                message.style.color = '#16a34a';
+                checkBtn.disabled = true;
+            } else {
+                message.textContent = 'Wrong answer. Try the pattern again.';
+                message.style.color = '#be123c';
+            }
+        }
+
+        function resetGame() {
+            initGame();
+        }
+
+        checkBtn.addEventListener('click', checkVelocity);
+        velocityInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkVelocity();
+            }
+        });
+        resetBtn.addEventListener('click', resetGame);
+
+        initGame();
+    </script>
 </body>
 
 </html>
